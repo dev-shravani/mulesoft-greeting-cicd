@@ -14,7 +14,7 @@
       <flow-ref name="greetingFlow" />
     </munit:execution>
     <munit:validation>
-      <munit-tools:assert-that expression="#[payload]" is="#[MunitTools::equalTo('{ &quot;message&quot;: &quot;wrong&quot; }')]" />
+      <munit-tools:assert-that expression="#[payload]" is="#[MunitTools::equalTo('{ &quot;message&quot;: &quot;Hello from MuleSoft!&quot; }')]" />
     </munit:validation>
   </munit:test>
 </mule>
