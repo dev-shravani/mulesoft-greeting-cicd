@@ -88,7 +88,7 @@ jobs:
             </profiles>
           </settings>
           EOF
-          
+
       - name: Deploy to CloudHub 2.0
         run: |
           mvn clean deploy -DmuleDeploy \

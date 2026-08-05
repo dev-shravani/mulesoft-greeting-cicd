@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>greeting</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
 
 	<name>greeting</name>
@@ -32,22 +30,26 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+
 				<configuration>
-					<cloudhub2Deployment>
-						<uri>https://anypoint.mulesoft.com</uri>
-						<provider>MC</provider>
-						<environment>${anypoint.environment}</environment>
-						<target>${anypoint.target}</target>
-						<applicationName>${anypoint.appName}</applicationName>
-						<muleVersion>${mule.version}</muleVersion>
-						<username>${anypoint.username}</username>
-						<password>${anypoint.password}</password>
-						<properties>
-							<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
-							<api.id>${api.id}</api.id>
-						</properties>
-					</cloudhub2Deployment>
+					<classifier>---- select project type ----</classifier>
+
+	<cloudhub2Deployment>
+		<uri>https://anypoint.mulesoft.com</uri>
+		<provider>MC</provider>
+		<environment>${anypoint.environment}</environment>
+		<target>${anypoint.target}</target>
+		<applicationName>${anypoint.appName}</applicationName>
+		<muleVersion>${mule.version}</muleVersion>
+		<username>${anypoint.username}</username>
+		<password>${anypoint.password}</password>
+		<properties>
+			<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
+			<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
+			<api.id>${api.id}</api.id>
+		</properties>
+	</cloudhub2Deployment>
+					
 				</configuration>
 			</plugin>
 			<plugin>
