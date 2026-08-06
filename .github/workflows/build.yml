@@ -26,7 +26,7 @@ jobs:
           <settings>
             <servers>
               <server>
-                <id>MuleRepository</id>
+                <id>anypoint-exchange-v3</id>
                 <username>${{ secrets.MULE_EE_USERNAME }}</username>
                 <password>${{ secrets.MULE_EE_PASSWORD }}</password>
               </server>
@@ -69,7 +69,7 @@ jobs:
           <settings>
             <servers>
               <server>
-                <id>MuleRepository</id>
+                <id>anypoint-exchange-v3</id>
                 <username>${{ secrets.MULE_EE_USERNAME }}</username>
                 <password>${{ secrets.MULE_EE_PASSWORD }}</password>
               </server>
