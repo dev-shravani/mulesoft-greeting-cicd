@@ -97,7 +97,6 @@ jobs:
             -Danypoint.environment=Sandbox \
             -Danypoint.target=Cloudhub-US-East-2 \
             -Danypoint.appName=greeting-api \
-            -Dmule.version=4.6.0 \
+            -Dmule.version=4.9.0 \
             -Danypoint.platform.client_id=${{ secrets.ENV_CLIENT_ID }} \
-            -Danypoint.platform.client_secret=${{ secrets.ENV_CLIENT_SECRET }} \
-            -Dapi.id=0
+            -Danypoint.platform.client_secret=${{ secrets.ENV_CLIENT_SECRET }}
