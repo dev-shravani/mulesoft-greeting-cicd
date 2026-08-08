@@ -47,6 +47,8 @@
 						<target>${anypoint.target}</target>
 						<applicationName>${anypoint.appName}</applicationName>
 						<muleVersion>${mule.version}</muleVersion>
+						<replicas>1</replicas>
+						<vCores>1</vCores>
 						<username>${anypoint.username}</username>
 						<password>${anypoint.password}</password>
 						<properties>
