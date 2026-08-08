@@ -47,7 +47,8 @@ jobs:
           EOF
 
       - name: Build and Test
-        run: mvn clean test
+        run: mvn clean deploy
+        
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-test

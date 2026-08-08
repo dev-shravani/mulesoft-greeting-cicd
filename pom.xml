@@ -161,6 +161,7 @@
 	</pluginRepositories>
 
 	<!-- Add the Maven facade as a repository in the distribution management section.
+	For the deploy phase to work successfully, your project's pom.xml must have a <distributionManagement> section configured with the remote server's URL
     The <id> value must be the same in the pom.xml file as in the ~/.m2/settings.xml file.
     The <id> value connects the pom.xml file with information to log in to the organization’s URL. -->
 
