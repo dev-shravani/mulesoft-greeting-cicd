@@ -4,7 +4,7 @@
 
 	<!-- 	<groupId>com.mycompany</groupId> -->
 
-	<!--  top-level organization or a business group, and view your organization ID. set groupId to your organization ID -->
+	<!--  select top-level organization or a business group, and view your organization ID. set groupId to your organization ID -->
 	<groupId>57cf8191-ba93-4bc8-aa20-fd2a0525e6da</groupId>
 	<artifactId>greeting</artifactId>
 	<version>1.0.1</version>
@@ -36,8 +36,7 @@
 
 				<configuration>
 					<!-- You must set the <classifier> element to make the asset visible in Exchange.
-                    In the mule-maven-plugin configuration, set <classifier> as mule-application (default), mule-application-template, mule-application-example, or mule-policy. -->
-
+In the mule-maven-plugin configuration, set <classifier> as mule-application (default), mule-application-template, mule-application-example, or mule-policy. -->
 					<classifier>mule-application</classifier>
 
 					<cloudhub2Deployment>
@@ -48,7 +47,7 @@
 						<applicationName>${anypoint.appName}</applicationName>
 						<muleVersion>${mule.version}</muleVersion>
 						<replicas>1</replicas>
-						<vCores>1</vCores>
+						<vCores>0.1</vCores>
 						<username>${anypoint.username}</username>
 						<password>${anypoint.password}</password>
 						<properties>
@@ -59,7 +58,9 @@
 						<deploymentSettings>
 							<http>
 								<inbound>
-									<lastMileSecurity>true</lastMileSecurity>
+									<!-- If enabled Listener must be HTTPS, configure TLS context with valid
+						keystore and certificate, port must remain 8081. host must be 0.0.0.0 in cloudhub shared space-->
+									<lastMileSecurity>false</lastMileSecurity>
 								</inbound>
 							</http>
 						</deploymentSettings>
@@ -150,7 +151,6 @@
 			<id>mule-public</id>
 			<url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
 		</pluginRepository>
-
 		<pluginRepository>
 			<id>mulesoft-releases</id>
 			<name>MuleSoft Releases Repository</name>
@@ -163,9 +163,10 @@
 	</pluginRepositories>
 
 	<!-- Add the Maven facade as a repository in the distribution management section.
-	For the deploy phase to work successfully, your project's pom.xml must have a <distributionManagement> section configured with the remote server's URL
-    The <id> value must be the same in the pom.xml file as in the ~/.m2/settings.xml file.
-    The <id> value connects the pom.xml file with information to log in to the organization’s URL. -->
+For the deploy phase to work successfully,
+your project's pom.xml must have a <distributionManagement> section configured with the remote server's URL.
+The <id> value must be the same in the pom.xml file as in the ~/.m2/settings.xml file.
+The <id> value connects the pom.xml file with information to log in to the organization’s URL. -->
 
 	<distributionManagement>
 		<repository>
