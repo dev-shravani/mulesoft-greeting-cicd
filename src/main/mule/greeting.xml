@@ -12,5 +12,6 @@ http://www.mulesoft.org/schema/mule/api-gateway https://www.mulesoft.org/schema/
 	<flow name="greetingFlow" doc:id="24e96b50-0110-4298-b026-1994f2ac1ea3" >
 		<http:listener doc:name="Listener" doc:id="b43b220b-ebac-49c4-bbb7-6c29a116e049" config-ref="HTTP_Listener_config" path="/greetings" outputMimeType="application/json" allowedMethods="GET"/>
 		<set-payload value='{ "message": "Hello from MuleSoft!" }' doc:name="Set Payload" doc:id="4e196984-c475-424e-973c-ddb3f7efed04" mimeType="application/json"/>
+		<logger level="INFO" doc:name="Logger" doc:id="131862dc-3ca2-44d3-a620-1ce95f27b305" message='#[flow.name default "Flow" ++ " Completed"]'/>
 	</flow>
 </mule>
