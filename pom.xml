@@ -7,7 +7,7 @@
 	<!--  select top-level organization or a business group, and view your organization ID. set groupId to your organization ID -->
 	<groupId>57cf8191-ba93-4bc8-aa20-fd2a0525e6da</groupId>
 	<artifactId>greeting</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<packaging>mule-application</packaging>
 
 	<name>greeting</name>
