@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Java 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -89,32 +89,32 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Generate Maven settings.xml
-        run: |
-          mkdir -p ~/.m2
-          cat > ~/.m2/settings.xml <<EOF
-          <settings>
-            <servers>
-              <server>
-                <id>anypoint-exchange-v3</id>
-                <username>${{ secrets.MULE_EE_USERNAME }}</username>
-                <password>${{ secrets.MULE_EE_PASSWORD }}</password>
-              </server>
-            </servers>
-            <profiles>
-              <profile>
-                <id>mule-extra-repos</id>
-                <activation><activeByDefault>true</activeByDefault></activation>
-                <repositories>
-                  <repository>
-                    <id>MuleRepository</id>
-                    <url>https://repository.mulesoft.org/releases/</url>
-                  </repository>
-                </repositories>
-              </profile>
-            </profiles>
-          </settings>
-          EOF
+#      - name: Generate Maven settings.xml
+#        run: |
+#          mkdir -p ~/.m2
+#          cat > ~/.m2/settings.xml <<EOF
+#          <settings>
+#            <servers>
+#              <server>
+#                <id>anypoint-exchange-v3</id>
+#                <username>${{ secrets.MULE_EE_USERNAME }}</username>
+#                <password>${{ secrets.MULE_EE_PASSWORD }}</password>
+#              </server>
+#            </servers>
+#            <profiles>
+#              <profile>
+#                <id>mule-extra-repos</id>
+#                <activation><activeByDefault>true</activeByDefault></activation>
+#                <repositories>
+#                  <repository>
+#                    <id>MuleRepository</id>
+#                    <url>https://repository.mulesoft.org/releases/</url>
+#                  </repository>
+#                </repositories>
+#              </profile>
+#            </profiles>
+#          </settings>
+#          EOF
 
       - name: Deploy to CloudHub 2.0
         run: |
