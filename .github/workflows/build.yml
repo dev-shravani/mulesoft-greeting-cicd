@@ -53,7 +53,7 @@ jobs:
           EOF
 
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: mvn clean deploy
 #      - name: Stamp artifact file name with commit hash
 #        run: |
 #          artifactName1=$(ls target/*.jar | head -1)
