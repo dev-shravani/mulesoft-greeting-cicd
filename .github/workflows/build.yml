@@ -127,5 +127,5 @@ jobs:
             -Dmule.version=4.9.0 \
             -Danypoint.platform.client_id=${{ secrets.ENV_CLIENT_ID }} \
             -Danypoint.platform.client_secret=${{ secrets.ENV_CLIENT_SECRET }} \
-            -Dapi.id=0 \
+            -Dapi.id=21095784 \
             -DskipMunitTests
