@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- 	<groupId>com.mycompany</groupId> -->
+	<!-- <groupId>com.mycompany</groupId> -->
 
-	<!--  select top-level organization or a business group, and view your organization ID. set groupId to your organization ID -->
+	<!-- select top-level organization or a business group, and view your organization 
+		ID. set groupId to your organization ID -->
 	<groupId>57cf8191-ba93-4bc8-aa20-fd2a0525e6da</groupId>
 	<artifactId>greeting</artifactId>
 	<version>1.0.2</version>
@@ -35,8 +38,10 @@
 				<extensions>true</extensions>
 
 				<configuration>
-					<!-- You must set the <classifier> element to make the asset visible in Exchange.
-In the mule-maven-plugin configuration, set <classifier> as mule-application (default), mule-application-template, mule-application-example, or mule-policy. -->
+					<!-- You must set the <classifier> element to make the asset visible 
+						in Exchange. In the mule-maven-plugin configuration, set <classifier> as 
+						mule-application (default), mule-application-template, mule-application-example, 
+						or mule-policy. -->
 					<classifier>mule-application</classifier>
 
 					<cloudhub2Deployment>
@@ -58,8 +63,9 @@ In the mule-maven-plugin configuration, set <classifier> as mule-application (de
 						<deploymentSettings>
 							<http>
 								<inbound>
-									<!-- If enabled Listener must be HTTPS, configure TLS context with valid
-						keystore and certificate, port must remain 8081. host must be 0.0.0.0 in cloudhub shared space-->
+									<!-- If enabled Listener must be HTTPS, configure TLS context with 
+										valid keystore and certificate, port must remain 8081. host must be 0.0.0.0 
+										in cloudhub shared space -->
 									<lastMileSecurity>false</lastMileSecurity>
 								</inbound>
 							</http>
@@ -83,8 +89,13 @@ In the mule-maven-plugin configuration, set <classifier> as mule-application (de
 					</execution>
 				</executions>
 				<configuration>
+					<!-- Force MUnit to run using the Enterprise engine! Default is MULE_CE -->
+					<runtimeProduct>MULE_EE</runtimeProduct>
 					<coverage>
 						<runCoverage>true</runCoverage>
+						<!-- Fails build if conditions are not met. -->
+						<failBuild>true</failBuild>
+						<requiredApplicationCoverage>80</requiredApplicationCoverage>
 						<formats>
 							<format>html</format>
 						</formats>
@@ -162,11 +173,12 @@ In the mule-maven-plugin configuration, set <classifier> as mule-application (de
 		</pluginRepository>
 	</pluginRepositories>
 
-	<!-- Add the Maven facade as a repository in the distribution management section.
-For the deploy phase to work successfully,
-your project's pom.xml must have a <distributionManagement> section configured with the remote server's URL.
-The <id> value must be the same in the pom.xml file as in the ~/.m2/settings.xml file.
-The <id> value connects the pom.xml file with information to log in to the organization’s URL. -->
+	<!-- Add the Maven facade as a repository in the distribution management 
+		section. For the deploy phase to work successfully, your project's pom.xml 
+		must have a <distributionManagement> section configured with the remote server's 
+		URL. The <id> value must be the same in the pom.xml file as in the ~/.m2/settings.xml 
+		file. The <id> value connects the pom.xml file with information to log in 
+		to the organization’s URL. -->
 
 	<distributionManagement>
 		<repository>
