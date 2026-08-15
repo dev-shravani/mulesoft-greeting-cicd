@@ -24,6 +24,34 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 17
+
+      - name: Generate Maven settings.xml
+        run: |
+          mkdir -p ~/.m2
+          cat > ~/.m2/settings.xml <<EOF
+          <settings>
+            <servers>
+              <server>
+                <id>anypoint-exchange-v3</id>
+                <username>${{ secrets.MULE_EE_USERNAME }}</username>
+                <password>${{ secrets.MULE_EE_PASSWORD }}</password>
+              </server>
+            </servers>
+            <profiles>
+              <profile>
+                <id>mule-extra-repos</id>
+                <activation><activeByDefault>true</activeByDefault></activation>
+                <repositories>
+                  <repository>
+                    <id>MuleRepository</id>
+                    <url>https://repository.mulesoft.org/releases/</url>
+                  </repository>
+                </repositories>
+              </profile>
+            </profiles>
+          </settings>
+          EOF
+
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 #      - name: Stamp artifact file name with commit hash
