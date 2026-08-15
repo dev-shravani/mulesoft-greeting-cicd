@@ -40,6 +40,15 @@ jobs:
                     <id>MuleRepository</id>
                     <url>https://repository.mulesoft.org/releases/</url>
                   </repository>
+          
+                  <repository>
+                    <id>mulesoft-releases</id>
+                    <url>https://repository.mulesoft.org/nexus/content/repositories/releases/</url>
+                  </repository>
+                  <repository>
+                    <id>mulesoft-public</id>
+                    <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
+                  </repository>
                 </repositories>
               </profile>
             </profiles>
