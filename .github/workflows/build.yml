@@ -81,7 +81,8 @@ jobs:
   provision-api:
     runs-on: ubuntu-latest
     needs: build-and-test
-
+    outputs:
+      api_id: ${{ steps.create-api.outputs.api_id }}
     steps:
       - name: Get Bearer Token
         id: get-token
@@ -115,7 +116,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build-and-test
+    needs: provision-api
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -138,5 +139,5 @@ jobs:
             -Dmule.version=4.9.0 \
             -Danypoint.platform.client_id=${{ secrets.ENV_CLIENT_ID }} \
             -Danypoint.platform.client_secret=${{ secrets.ENV_CLIENT_SECRET }} \
-            -Dapi.id=21095784 \
+            -Dapi.id=${{ needs.provision-api.outputs.api_id }} \
             -DskipMunitTests
