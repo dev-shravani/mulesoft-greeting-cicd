@@ -76,7 +76,7 @@ jobs:
         run: mvn clean test
 
       - name: Publish to Exchange
-        run: mvn clean test -DskipMunitTests
+        run: mvn clean deploy -DskipMunitTests
 
   provision-api:
     runs-on: ubuntu-latest
@@ -93,6 +93,25 @@ jobs:
             --data-urlencode "grant_type=client_credentials" \
             | jq -r '.access_token')
           echo "token=$TOKEN" >> $GITHUB_OUTPUT
+          
+      - name: Create API Instance
+        id: create-api
+        run: |
+          API_ID=$(curl -s -X POST \
+            "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/${{ secrets.ANYPOINT_ORG_ID }}/environments/${{ secrets.ANYPOINT_ENV_ID }}/apis" \
+            -H "Authorization: Bearer ${{ steps.get-token.outputs.token }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "technology": "mule4",
+              "endpoint": { "uri": "https://greeting-api.cloudhub.io", "proxyUri": null, "isCloudHub": false },
+              "instanceLabel": "greeting-api-instance",
+              "spec": {
+                "assetId": "test-instance",
+                "groupId": "57cf8191-ba93-4bc8-aa20-fd2a0525e6da",
+                "version": "1.0.0"
+              }
+            }' | jq -r '.id')
+          echo "api_id=$API_ID" >> $GITHUB_OUTPUT
 
   deploy:
     runs-on: ubuntu-latest
