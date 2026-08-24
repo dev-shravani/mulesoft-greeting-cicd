@@ -2,7 +2,7 @@
   "configurationData":{
     "clusterizable":true,
     "exposeHeaders":true,
-    "rateLimits": [{"timePeriodInMilliseconds": "$TIME_MILLI_SECONDS", "maximumRequests": "$MAX_REQ"}]
+    "rateLimits": [{"timePeriodInMilliseconds": $TIME_MILLI_SECONDS, "maximumRequests": $MAX_REQ}]
   },
   "pointcutData":null,
   "policyTemplateId":"rate-limiting",
