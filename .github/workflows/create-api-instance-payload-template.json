@@ -1,0 +1,14 @@
+{
+  "technology": "mule4",
+  "endpoint": {
+    "uri": "$API_URI",
+    "proxyUri": null,
+    "isCloudHub": false
+  },
+  "instanceLabel": "$API_LABEL",
+  "spec": {
+    "assetId": "$API_ASSET_ID",
+    "groupId": "$API_GROUP_ID",
+    "version": "$API_VERSION"
+  }
+}

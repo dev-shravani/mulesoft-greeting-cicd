@@ -97,21 +97,27 @@ jobs:
           
       - name: Create API Instance
         id: create-api
+        env:
+          API_URI: "https://greeting-api.cloudhub.io"
+          API_LABEL: "greeting-api-instance"
+          API_GROUP_ID: "57cf8191-ba93-4bc8-aa20-fd2a0525e6da"
+          API_ASSET_ID: "test-instance"
+          API_VERSION: "1.0.0"
+
         run: |
+          # 1. Substitute variables in the template and output to a temporary payload file
+          envsubst < .github/workflows/create-api-instance-payload-template.json > temp-api-instance-payload.json
+
+          # 2. (Optional debug step) Echo the compiled payload to verify values are set
+          # echo "Generated Payload:"
+          # cat temp-payload.json
+          
+          # 3. Post the compiled temporary JSON file directly
           API_ID=$(curl -s -X POST \
             "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/${{ secrets.ANYPOINT_ORG_ID }}/environments/${{ secrets.ANYPOINT_ENV_ID }}/apis" \
             -H "Authorization: Bearer ${{ steps.get-token.outputs.token }}" \
             -H "Content-Type: application/json" \
-            -d '{
-              "technology": "mule4",
-              "endpoint": { "uri": "https://greeting-api.cloudhub.io", "proxyUri": null, "isCloudHub": false },
-              "instanceLabel": "greeting-api-instance",
-              "spec": {
-                "assetId": "test-instance",
-                "groupId": "57cf8191-ba93-4bc8-aa20-fd2a0525e6da",
-                "version": "1.0.0"
-              }
-            }' | jq -r '.id')
+            -d "@temp-api-instance-payload.json" | jq -r '.id')
           echo "api_id=$API_ID" >> $GITHUB_OUTPUT
 
   deploy:
