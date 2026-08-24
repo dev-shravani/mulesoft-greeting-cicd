@@ -99,7 +99,7 @@ jobs:
         id: create-api
         env:
           API_URI: "https://greeting-api.cloudhub.io"
-          API_LABEL: "greeting-api-instance"
+          API_LABEL: "greeting-api-instance-v1"
           API_GROUP_ID: "57cf8191-ba93-4bc8-aa20-fd2a0525e6da"
           API_ASSET_ID: "test-instance"
           API_VERSION: "1.0.0"
