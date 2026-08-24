@@ -84,6 +84,9 @@ jobs:
     outputs:
       api_id: ${{ steps.create-api.outputs.api_id }}
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
       - name: Get Bearer Token
         id: get-token
         run: |
