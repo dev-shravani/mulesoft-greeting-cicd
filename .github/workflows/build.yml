@@ -105,7 +105,7 @@ jobs:
           API_LABEL: "greeting-api-instance-v1"
           API_GROUP_ID: "57cf8191-ba93-4bc8-aa20-fd2a0525e6da"
           API_ASSET_ID: "test-instance"
-          API_VERSION: "1.0.0"
+          API_ASSET_VERSION: "1.0.0"
 
         run: |
           # 1. Substitute variables in the template and output to a temporary payload file
@@ -113,7 +113,7 @@ jobs:
 
           # 2. (Optional debug step) Echo the compiled payload to verify values are set
           # echo "Generated Payload:"
-          # cat temp-payload.json
+          # cat temp-api-instance-payload.json
           
           # 3. Post the compiled temporary JSON file directly
           API_ID=$(curl -s -X POST \
@@ -122,6 +122,26 @@ jobs:
             -H "Content-Type: application/json" \
             -d "@temp-api-instance-payload.json" | jq -r '.id')
           echo "api_id=$API_ID" >> $GITHUB_OUTPUT
+
+      - name: Apply Rate Limiting Policy
+        env:
+          TIME_MILLI_SECONDS: 60000
+          MAX_REQ: 3
+
+        run: |
+          # 1. Substitute variables in the template and output to a temporary payload file
+          envsubst < .github/workflows/apply-policy-payload-template.json > temp-apply-policy-payload.json
+
+          # 2. (Optional debug step) Echo the compiled payload to verify values are set
+          # echo "Generated Payload:"
+          # cat temp-apply-policy-payload.json
+          
+          # 3. Post the compiled temporary JSON file directly
+          curl -s -X POST \
+            "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/${{ secrets.ANYPOINT_ORG_ID }}/environments/${{ secrets.ANYPOINT_ENV_ID }}/apis/${{ steps.create-api.outputs.api_id }}/policies" \
+            -H "Authorization: Bearer ${{ steps.get-token.outputs.token }}" \
+            -H "Content-Type: application/json" \
+            -d "@temp-apply-policy-payload.json"
 
   deploy:
     runs-on: ubuntu-latest

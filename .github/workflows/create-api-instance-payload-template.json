@@ -9,6 +9,6 @@
   "spec": {
     "assetId": "$API_ASSET_ID",
     "groupId": "$API_GROUP_ID",
-    "version": "$API_VERSION"
+    "version": "$API_ASSET_VERSION"
   }
 }
