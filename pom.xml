@@ -8,7 +8,7 @@
 
 	<!-- select top-level organization or a business group, and view your organization 
 		ID. set groupId to your organization ID -->
-	<groupId>57cf8191-ba93-4bc8-aa20-fd2a0525e6da</groupId>
+	<groupId>26be0591-c1a3-4c05-be0b-98098810764b</groupId>
 	<artifactId>greeting</artifactId>
 	<version>1.0.2</version>
 	<packaging>mule-application</packaging>
