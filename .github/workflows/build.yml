@@ -103,7 +103,7 @@ jobs:
         env:
           API_URI: "https://greeting-api.cloudhub.io"
           API_LABEL: "greeting-api-instance-v1"
-          API_GROUP_ID: "57cf8191-ba93-4bc8-aa20-fd2a0525e6da"
+          API_GROUP_ID: "26be0591-c1a3-4c05-be0b-98098810764b"
           API_ASSET_ID: "test-instance"
           API_ASSET_VERSION: "1.0.0"
 
@@ -160,11 +160,11 @@ jobs:
       - name: Deploy to CloudHub 2.0
         run: |
           mvn clean deploy -DmuleDeploy \
-            -Danypoint.username=${{ secrets.ANYPOINT_USERNAME }} \
-            -Danypoint.password=${{ secrets.ANYPOINT_PASSWORD }} \
+            -Dconnected.app.client.id=${{ secrets.CONNECTED_APP_CLIENT_ID }} \
+            -Dconnected.app.client.secret=${{ secrets.CONNECTED_APP_CLIENT_SECRET }} \
             -Danypoint.environment=Sandbox \
             -Danypoint.target=Cloudhub-US-East-2 \
-            -Danypoint.appName=greeting-api \
+            -Danypoint.appName=greeting-api-v1 \
             -Dmule.version=4.9.0 \
             -Danypoint.platform.client_id=${{ secrets.ENV_CLIENT_ID }} \
             -Danypoint.platform.client_secret=${{ secrets.ENV_CLIENT_SECRET }} \
