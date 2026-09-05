@@ -10,7 +10,7 @@
 		ID. set groupId to your organization ID -->
 	<groupId>26be0591-c1a3-4c05-be0b-98098810764b</groupId>
 	<artifactId>greeting</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
 
 	<name>greeting</name>
